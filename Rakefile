@@ -23,7 +23,7 @@ Jeweler::Tasks.new do |gem|
   gem.version = C3DCI.version
   gem.license = "MIT"
   gem.summary = %Q{A tiny DCI helper library}
-  gem.description = %Q{TA tiny helper library for the DCI pattern}
+  gem.description = %Q{A tiny helper library for the DCI pattern}
   gem.email = "chris@dinarrr.com"
   gem.authors = ["Christoph Grabo"]
   # dependencies defined in Gemfile
