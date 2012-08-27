@@ -10,40 +10,38 @@ rescue Bundler::BundlerError => e
   exit e.status_code
 end
 require 'rake'
-
 require 'jeweler'
+require 'rspec/core'
+require 'rspec/core/rake_task'
+
+require "c3-dci"
+
 Jeweler::Tasks.new do |gem|
   # gem is a Gem::Specification... see http://docs.rubygems.org/read/chapter/20 for more options
   gem.name = "c3-dci"
-  gem.homepage = "http://github.com/asaaki/c3-dci"
+  gem.homepage = "http://github.com/CarrotCornCat/c3-dci"
+  gem.version = C3DCI.version
   gem.license = "MIT"
-  gem.summary = %Q{TODO: one-line summary of your gem}
-  gem.description = %Q{TODO: longer description of your gem}
+  gem.summary = %Q{A tiny DCI helper library}
+  gem.description = %Q{TA tiny helper library for the DCI pattern}
   gem.email = "chris@dinarrr.com"
   gem.authors = ["Christoph Grabo"]
   # dependencies defined in Gemfile
 end
 Jeweler::RubygemsDotOrgTasks.new
 
-require 'rspec/core'
-require 'rspec/core/rake_task'
 RSpec::Core::RakeTask.new(:spec) do |spec|
   spec.pattern = FileList['spec/**/*_spec.rb']
 end
 
-RSpec::Core::RakeTask.new(:rcov) do |spec|
-  spec.pattern = 'spec/**/*_spec.rb'
-  spec.rcov = true
+desc "Starts IRB with gem loaded"
+task :irb do
+  sh "irb -I lib -r c3-dci"
+end
+
+desc "Starts PRY with gem loaded"
+task :pry do
+  sh "pry -I lib -r c3-dci --no-pager"
 end
 
 task :default => :spec
-
-require 'rdoc/task'
-Rake::RDocTask.new do |rdoc|
-  version = File.exist?('VERSION') ? File.read('VERSION') : ""
-
-  rdoc.rdoc_dir = 'rdoc'
-  rdoc.title = "c3-dci #{version}"
-  rdoc.rdoc_files.include('README*')
-  rdoc.rdoc_files.include('lib/**/*.rb')
-end
