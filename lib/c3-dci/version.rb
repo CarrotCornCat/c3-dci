@@ -5,7 +5,7 @@ module C3DCI
     MAJOR = 0
     MINOR = 1
     PATCH = 0
-    BUILD = 'dev1'
+    BUILD = nil
 
     STRING = [MAJOR, MINOR, PATCH, BUILD].compact.join('.')
 
