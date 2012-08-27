@@ -2,6 +2,10 @@
 *.rbc
 .bundle
 .config
+.rbenv-gemsets
+.rbenv-version
+.ruby-version
+.rvmrc
 .yardoc
 _yardoc
 coverage
